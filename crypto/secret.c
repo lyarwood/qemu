@@ -139,8 +139,7 @@ static void qcrypto_secret_decrypt(QCryptoSecret *secret,
         goto cleanup;
     }
 
-    if (plaintext[ciphertextlen - 1] > 16 ||
-        plaintext[ciphertextlen - 1] > ciphertextlen) {
+    if (plaintext[ciphertextlen - 1] > ciphertextlen) {
         error_setg(errp, "Incorrect number of padding bytes (%d) "
                    "found on decrypted data",
                    (int)plaintext[ciphertextlen - 1]);
